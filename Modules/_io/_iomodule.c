@@ -388,7 +388,7 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
         goto error;
 
     /* buffering */
-    {
+    if (buffering < 0) {
         PyObject *res = _PyObject_CallMethodId(raw, &PyId_isatty, NULL);
         if (res == NULL)
             goto error;
